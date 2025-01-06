@@ -20,7 +20,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          role-to-assume: ROLE-TO-ASSUME # Role that has permission to list Lambda functions
+          role-to-assume: arn:aws:iam::975049994612:role/oidc-lambda # Role that has permission to list Lambda functions
           role-session-name: samplerolesession
           aws-region: ap-south-1
 
