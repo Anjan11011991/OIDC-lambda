@@ -24,12 +24,12 @@ jobs:
           role-session-name: samplerolesession
           aws-region: ap-south-1
 
-      - name: Trigger Lambda function without Payload
-        uses: aws-actions/aws-lambda-invoke@v1
-        with:
-          function-name: prod
-          payload: '{}'  # Empty payload
-
+      - name: Invoke Lambda Function without Payload
+        run: |
+          aws lambda invoke \
+            --function-name prod \
+            output.txt
+            
       - name: List AWS Lambda functions
         run: |
           aws lambda list-functions --region ${{ env.AWS_REGION }} --output table
