@@ -23,6 +23,3 @@ package:
   exclude:
     - .git/**
     - .github/**
-
-plugins:
-  - serverless-offline  # Optional plugin for local testing
