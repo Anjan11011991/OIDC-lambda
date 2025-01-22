@@ -30,17 +30,18 @@ jobs:
           npm install -g serverless
           npm install
 
-      - name: Serverless login
-        run: |
-          echo "//app.serverless.com/auth" >> ~/.serverless/.credentials
-          echo "accessKey=${{ secrets.SERVERLESS_ACCESS_KEY }}" >> ~/.serverless/.credentials
-
       # Step 4: Configure AWS credentials using OIDC
       - name: Configure AWS credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::975049994612:role/oidc-lambda  # Replace with your role ARN
           aws-region: ap-south-1  # Replace with your AWS region
+
+      - name: Set Serverless Access Key
+        run: |
+          mkdir -p ~/.serverless
+          echo "[serverless]" > ~/.serverless/.credentials
+          echo "accessKey=${{ secrets.SERVERLESS_ACCESS_KEY }}" >> ~/.serverless/.credentials
 
       # Step 5: Deploy the Lambda function with Serverless Framework
       - name: Deploy to AWS Lambda
