@@ -30,6 +30,11 @@ jobs:
           npm install -g serverless
           npm install
 
+      - name: Serverless login
+        run: |
+          echo "//app.serverless.com/auth" >> ~/.serverless/.credentials
+          echo "accessKey=${{ secrets.SERVERLESS_ACCESS_KEY }}" >> ~/.serverless/.credentials
+
       # Step 4: Configure AWS credentials using OIDC
       - name: Configure AWS credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v1
