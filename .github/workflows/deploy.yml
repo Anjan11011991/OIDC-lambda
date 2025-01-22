@@ -27,7 +27,7 @@ jobs:
       # Step 3: Install dependencies
       - name: Install dependencies
         run: |
-          npm install -g serverless
+          npm install -g serverless@3
           npm install
 
       # Step 4: Configure AWS credentials using OIDC
