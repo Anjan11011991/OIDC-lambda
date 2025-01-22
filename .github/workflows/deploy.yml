@@ -37,13 +37,7 @@ jobs:
           role-to-assume: arn:aws:iam::975049994612:role/oidc-lambda  # Replace with your role ARN
           aws-region: ap-south-1  # Replace with your AWS region
 
-      - name: Set Serverless Access Key
-        run: |
-          mkdir -p ~/.serverless
-          echo "[serverless]" > ~/.serverless/.credentials
-          echo "accessKey=${{ secrets.SERVERLESS_ACCESS_KEY }}" >> ~/.serverless/.credentials
-
       # Step 5: Deploy the Lambda function with Serverless Framework
       - name: Deploy to AWS Lambda
         run: |
-          serverless deploy
+          sls deploy
